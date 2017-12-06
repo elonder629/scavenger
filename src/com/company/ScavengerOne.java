@@ -16,20 +16,28 @@ public class ScavengerOne {
 		capacity = cpcity;
 		Scanner sf = new Scanner(new File("01.in"));
 		int maxIndx = -1;
-		String weightNum[] = new String[100];
+		String weightString[] = new String[100]; //REMEMBER weightNum is still a stringArray
 		while (sf.hasNext()) {
 			maxIndx++;
-			weightNum[maxIndx] = sf.nextLine();
+			weightString[maxIndx] = sf.nextLine();
 		}
-		sf.close();
+		sf.close(); //this just reads from the file no need to change here
+
+
+		final int[] weightNum = new int[weightString.length]; //turn weighString to int
+		for (int i = 0; i < weightString.length; i++) {
+			weightNum[i] = Integer.parseInt(weightString[i]);
+		}
 
 		int a = 0;
 		int b = 1;
 		for (int i = 0; i == weightNum.length && available[i] >= 0; i++) { //need to check the math over
-			available[i] = capacity - (a + b);
-			a = a + b;
-			i++;
-
+			available[i] = capacity - (weightNum[a] + weightNum[b]); //100-indexes
+			a += 2;
+			b += 2;
+			i++; //count for how many items
+			if (available[i] == 0) {
+			}
 
 			// YOUR CODE IN HERE
 			//
@@ -40,12 +48,11 @@ public class ScavengerOne {
 			//the max capacity is 100
 			//if statement when <=100
 
-			return new int[0];
+
 			// YOUR CODE IN HERE
 		}
-		return  ;//Change this
+		return new int[0];
 	}
-
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 
