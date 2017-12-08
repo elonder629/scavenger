@@ -12,7 +12,7 @@ public class ScavengerOne {
 	public static int cpcity = 100;
 	public static Array findingAvailable[];
 	//^^keeps track of avaliables and values closest to zero dunno if it's actually necessary
-	private static int[] bestItems(int capacity, int[] available) throws IOException {
+		private static int[] bestItems(int capacity, int[] available) throws IOException {
 		capacity = cpcity;
 		Scanner sf = new Scanner(new File("01.in"));
 		int maxIndx = -1;
@@ -23,10 +23,15 @@ public class ScavengerOne {
 		}
 		sf.close(); //this just reads from the file no need to change here
 
+		//Replace all doesn't work here use split method?? ex: stringNam = s.split("\\s") <--isn't what i need rip
+		//reference:
+		//String[] items = arr.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
 
-		final int[] weightNum = new int[weightString.length]; //turn weighString to int
+		int[] weightNum = new int[weightString.length];
+		//setting amount of indexes to the length of weightString
 		for (int i = 0; i < weightString.length; i++) {
-			weightNum[i] = Integer.parseInt(weightString[i]);
+			weightNum[i] = Integer.parseInt(weightString[i]); //??this is the problem
+
 		}
 
 		int a = 0;
@@ -52,6 +57,7 @@ public class ScavengerOne {
 			// YOUR CODE IN HERE
 		}
 		return new int[0];
+	}
 	}
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
